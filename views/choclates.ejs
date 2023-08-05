@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            .card {
+                border: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px; /* Added margin to create spacing between cards */
+            }
+            .card-title {
+                font-size: 1.5rem;
+                color: #333;
+                margin-bottom: 0.5rem;
+            }
+            .card-text {
+                font-size: 1rem;
+                color: #555;
+                margin-bottom: 0.2rem;
+            }
+        </style>
+
+        <div class="container mt-5">
+            <div class="row">
+                <% if (choclates && choclates.length > 0) { %> <% choclates.map((item) => { %>
+
+                <div class="col-4">
+                    <div class="card" style="width: 18rem">
+                        <img src="<%= item.image %>" class="card-img-top" alt="ChocoBliss Chocolate" />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= item.name %></h5>
+                            <p class="card-text">Brand: <%= item.brand %></p>
+                            <p class="card-text">Type: <%= item.type %></p>
+                            <p class="card-text">Flavor: <%= item.flavor %></p>
+                            <p class="card-text">Price: <%= `$${item.price}` %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <% }) %> <% } %>
+            </div>
+        </div>
+
+        <%- include("./partials/cdn.ejs") %>
+    </body>
+</html>

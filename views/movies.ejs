@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+        <div class="container mt-5">
+            <div class="row">
+                <% if (movies && movies.length > 0) { %> <% movies.map((item) => { %>
+                <div class="col-4">
+                    <div class="card">
+                        <img
+                            src="<%= item.poster %>"
+                            class="card-img-top"
+                            alt="<%= `${item.title} poster` %>"
+                            style="width: 416px; height: 450px"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= item.title %></h5>
+                            <p class="card-text">Year: <%= item.year %></p>
+                            <p class="card-text">Genre: <%= item.genre %></p>
+                            <p class="card-text">Director: <%= item.director %></p>
+                            <p class="card-text">IMDb Rating: <%= item.imbdRating %></p>
+                        </div>
+                    </div>
+                </div>
+                <% }) %> <% } %>
+            </div>
+        </div>
+        <%- include("./partials/cdn.ejs") %>
+    </body>
+</html>

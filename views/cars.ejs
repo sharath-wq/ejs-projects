@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+    <style>
+        .card {
+            width: 60rem;
+            margin: 0 auto;
+            border: 2px solid #333;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .card-text {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <body>
+        <%- include("./partials/nav.ejs") %>
+        <div class="container mt-5">
+            <% if (cars && cars.length > 0) { %> <% cars.map((car) => { %>
+            <div class="card mt-5">
+                <img src="<%= car.Image %>" class="card-img-top" alt="<%= car.Brand %>" />
+                <div class="card-body">
+                    <h5 class="card-title"><%= `${car.Brand} ${car.Model}` %></h5>
+                    <p class="card-text">Model: <%= car.Model %></p>
+                    <p class="card-text">Brand: <%= car.Brand %></p>
+                    <p class="card-text">Horsepower: <%= car.Horsepower %></p>
+                    <p class="card-text">Top Speed: <%= car.TopSpeedMPH %> MPH</p>
+                    <p class="card-text">Acceleration: <%= car.Acceleration %></p>
+                    <p class="card-text">Price: <%= car.Price %></p>
+                </div>
+            </div>
+            <% }) %> <% } %>
+        </div>
+        <%- include("./partials/cdn.ejs") %>
+    </body>
+</html>
